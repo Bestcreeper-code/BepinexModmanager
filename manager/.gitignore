@@ -1,0 +1,14 @@
+build/
+.vscode/
+.cache/
+
+Game
+Game.elf
+Game.exe
+imgui.ini
+
+screen*.gif
+screen*.png
+
+Logs/
+*.log

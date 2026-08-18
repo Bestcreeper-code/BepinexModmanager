@@ -1,0 +1,15 @@
+[submodule "manager/libs/raylib"]
+	path = manager/libs/raylib
+	url = git@github.com:raysan5/raylib.git
+[submodule "manager/libs/box2D"]
+	path = manager/libs/box2D
+	url = https://github.com/erincatto/box2d.git
+[submodule "manager/libs/imgui"]
+	path = manager/libs/imgui
+	url = https://github.com/ocornut/imgui.git
+[submodule "manager/libs/rlImGui"]
+	path = manager/libs/rlImGui
+	url = https://github.com/raylib-extras/rlImGui.git
+[submodule "manager/libs/cJSON"]
+	path = manager/libs/cJSON
+	url = git@github.com:DaveGamble/cJSON.git

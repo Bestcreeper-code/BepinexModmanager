@@ -1,0 +1,48 @@
+#version 330
+
+in vec2 fragTexCoord;
+out vec4 finalColor;
+
+uniform sampler2D texture0;
+uniform float warpStrength;
+
+void main()
+{
+    vec2 uv = fragTexCoord;
+    vec2 centered = uv * 2.0 - 1.0;
+
+    float r2 = dot(centered, centered);
+
+    // CRT warp
+    centered *= 1.0 + warpStrength * 0.1 * r2;
+    uv = centered * 0.5 + 0.5;
+
+    // distance to edge (0 = inside, >0 = outside)
+    float edge = max(abs(centered.x), abs(centered.y));
+
+    // tweak these
+    float screenEdge = 1.0;        // where screen ends
+    float outlineWidth = 0.05;     // thickness of outline
+    float fadeWidth = 0.02;        // softness
+
+    // masks
+    float screenMask = smoothstep(screenEdge, screenEdge - fadeWidth, edge);
+    float outlineMask = smoothstep(screenEdge + outlineWidth, screenEdge, edge);
+
+    // sample CRT only if inside
+    vec3 col = texture(texture0, uv).rgb;
+
+    // CRT effects only inside
+    float scanline = sin(uv.y * 900.0) * 0.04;
+    col -= scanline;
+    col *= 0.98 + 0.02 * sin(uv.y * 120.0);
+
+    // outline color (no CRT)
+    vec3 outlineColor = vec3(0.7, 0.7, 0.7);
+
+    // final mix
+    vec3 finalCol = mix(outlineColor, col, screenMask);
+    finalCol *= outlineMask;
+
+    finalColor = vec4(finalCol, 1.0);
+}

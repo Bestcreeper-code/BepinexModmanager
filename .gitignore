@@ -1,0 +1,14 @@
+Bootstrapper/Bootstrapper.sln.DotSettings.user
+Bootstrapper/.idea
+Bootstrapper/Bootstrapper/bin
+Bootstrapper/Bootstrapper/obj
+
+Bootstrapper/Bootstrapper/obj/Debug
+Bootstrapper/Bootstrapper/bin
+
+*/compile_commands.json
+*/.vscode
+*/.exe
+
+ModManager.zip
+ModMgr.zip
