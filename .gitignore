@@ -8,7 +8,7 @@ Bootstrapper/Bootstrapper/bin
 
 */compile_commands.json
 */.vscode
-*/.exe
+*.exe
 
 ModManager.zip
 ModMgr.zip
